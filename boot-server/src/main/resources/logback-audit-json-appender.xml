@@ -1,0 +1,55 @@
+<included>
+    <appender name="AUDIT" class="ch.qos.logback.classic.AsyncAppender">
+        <queueSize>1000</queueSize>
+        <!-- Never discard events even under heavy load -->
+        <discardingThreshold>0</discardingThreshold>
+        <!-- Never discard events even under heavy load, just block until the event is written -->
+        <neverBlock>false</neverBlock>
+        <!-- Max flush time in milliseconds, allow plenty of time because these are important -->
+        <!-- 30 seconds -->
+        <maxFlushTime>30000</maxFlushTime>
+        <includeCallerData>false</includeCallerData>
+        <appender name="INT-JSON-FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <append>true</append>
+            <prudent>false</prudent>
+            <file>${LOG_FILE}.audit.json.log</file>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <!-- Roll over hourly -->
+                <fileNamePattern>${LOG_FILE}.audit.json.%d{yyyy-MM-dd_HH}.gz</fileNamePattern>
+                <!-- 240 (hours) maximum log history files -->
+                <maxHistory>240</maxHistory>
+                <totalSizeCap>500GB</totalSizeCap>
+            </rollingPolicy>
+
+            <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+                <providers>
+                    <timestamp/>
+                    <pattern>
+                        <pattern>
+                            {
+                            "host": "${HOSTNAME}",
+                            "pid": "${PID}"
+                            }
+                        </pattern>
+                    </pattern>
+                    <threadName>
+                        <fieldName>threadName</fieldName>
+                    </threadName>
+                    <logLevel>
+                        <fieldName>logLevel</fieldName>
+                    </logLevel>
+                    <loggerName>
+                        <fieldName>loggerName</fieldName>
+                    </loggerName>
+                    <mdc>
+                        <fieldName>mdc</fieldName>
+                    </mdc>
+                    <tags/>
+                    <logstashMarkers/>
+                    <arguments/>
+                    <message/>
+                </providers>
+            </encoder>
+        </appender>
+    </appender>
+</included>

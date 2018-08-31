@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+
+    <!-- Don't include suffix because we will add that on in the expressions for each appender -->
+    <property name="LOG_FILE" value="${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}/}server}"/>
+
+    <!-- Main server log in JSON format -->
+    <include resource="logback-json-appender.xml"/>
+
+    <!-- Appender for audit logging -->
+    <include resource="logback-audit-json-appender.xml"/>
+    <logger name="auditlog" level="INFO" additivity="false">
+        <appender-ref ref="AUDIT"/>
+    </logger>
+
+    <springProfile name="nonprd,dev,qa,default">
+        <!-- Add standard non-JSON file output for easier debug reading -->
+        <include resource="logback-file-appender.xml" />
+        <!-- Add console output for easier debugging -->
+        <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
+
+        <root level="INFO">
+            <appender-ref ref="JSON" />
+            <appender-ref ref="FILE" />
+            <appender-ref ref="CONSOLE" />
+        </root>
+    </springProfile>
+
+    <springProfile name="prd">
+        <root level="INFO">
+            <appender-ref ref="JSON" />
+        </root>
+    </springProfile>
+
+</configuration>

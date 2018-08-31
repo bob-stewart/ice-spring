@@ -1,0 +1,19 @@
+# AsciiDoc Project Template
+
+This is a project template for generating html from Asciidoc.
+
+1. Make sure you have java and maven installed in your PATH such that you can
+run `java` and `mvn` from the command line.
+2. Make sure you have a bash shell (you can install cygwin or similar if you
+are on Windows, or you can just read the few steps from bin/gen-docs.sh and
+perform them manually).
+3. Copy this template directory to a new directory immediately under the
+techdocs repo root.  Name this new directory according to your document
+content e.g. project-overview
+4. Edit the pom.xml to name the artifactId to match your project directory.  There
+is a comment in the file to show you where.
+5. Edit the asciidoc contents under src/main/asciidoc/index.adoc
+6. Run `bin/gen-docs.sh` from the top level of your new directory
+7. Read your generated docs under techdocs/docs/*
+
+

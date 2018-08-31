@@ -1,0 +1,52 @@
+server:
+  port: 8080
+  compression:
+    enabled: true
+  tomcat:
+    #TODO: Set up basedir later for production usage
+    basedir: ./
+    accesslog:
+      enabled: true
+spring:
+  profiles:
+    # Force these to be the active profiles for now
+    active: dev
+  expression:
+    compiler:
+      mode: IMMEDIATE
+
+# We configure the core logging formats etc. here in the global profile.
+# NOTE: Configure logging levels etc. in other profiles like dev,stg,prd and NOT here
+logging:
+  # ONLY use the file name prefix because we add suffixes in our appenders
+  file: logs/server
+  pattern:
+    # ONLY use the following patterns for debugging in dev because they are EXPENSIVE due to populating caller info!!!
+    console: "%clr(%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd HH:mm:ss.SSS}}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}:%L %M){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"
+    file: "%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd HH:mm:ss.SSS}} ${LOG_LEVEL_PATTERN:-%5p} ${PID:- } --- [%t] %-40.40logger{39}:%L-%M : %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"
+
+---
+spring:
+  profiles: dev
+  session:
+    # DISABLE distributed spring sessions for now in dev because we don't have infrastructure
+    store-type: none
+    jdbc:
+      table-name: SPRING_SESSION
+
+logging:
+  level:
+    com:
+      exochain: TRACE
+
+# Database migration
+flyway:
+  # DISABLE Flyway auto-migrations for now because we haven't coded them up yet.
+  enabled: false
+
+# Spring security settings for dev
+security:
+  user:
+    name: user
+    password: password
+    role: EXAMPLE

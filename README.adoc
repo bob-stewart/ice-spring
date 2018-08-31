@@ -1,0 +1,138 @@
+# Template project for a Spring Boot Based Web App
+
+This is a template project that you can copy as a starter for your
+Spring Boot based project.
+
+## Project Features
+
+* Stub spring boot http app with maven module structure
+* Logging config etc. already configured
+* Example freemarker template and http controller
+* A template for techdocs AsciiDoc for this project
+
+## Initial Setup
+
+The following sections describe the steps needed to convert the template for your project
+
+### Copy Template
+
+Make a copy of this project into your project directory
+
+### Edit Root POM
+
+* Come up with a short name (no spaces) for your project (e.g. pace, bcapi, etc.)
+
+* Edit the root directory pom.xml file and change occurrences of "myproject" to
+your project name.
+
+The following lines need to be changed:
+
+    <groupId>com.exochain.myproject</groupId>
+    <artifactId>myproject-parent</artifactId>
+    <description>MyProject Parent</description>
+
+### Edit Boot Server POM
+
+* Edit the boot-server/pom.xml to change "myproject" to your project name just as
+you did with the top level pom.xml.
+
+The following lines need to be changed:
+
+	<parent>
+		<groupId>com.exochain.myproject</groupId>
+		<artifactId>myproject-parent</artifactId>
+	</parent>
+
+	<artifactId>myproject-server</artifactId>
+	<description>Description of My Project</description>
+
+### Sanity Check Compile and Run
+
+In a minute you will rename the java packages according to your project name,
+but first let's check to make sure you can compile and run the basic
+project as-is.
+
+Open a console window and change to the top level of your project.
+
+From the top level directory, build the project:
+
+    mvn clean package
+
+Then execute the result:
+
+    java -jar boot-server/target/myproject-server-0.0.1-SNAPSHOT.jar
+
+You should see log output in the console.  In a browser navigate to
+http://localhost:8080/ to see the output of your server.  You should see
+something like:
+
+    Exochain Home Page
+    Hello, World!
+    Test Visitor Debug Info
+    Test UUID	Session Start Time
+    e045f8ba-ab9c-11e8-8ea7-43966acdd05f	2018-08-29T15:04:50.062Z
+
+The output is from some dummy code to make sure it works.
+
+Now change back to the console window where you ran the server and
+hit Ctrl-C to stop the server.  You should see the log output of
+it shutting down.
+
+Now at this point you have verified your pom changes work.  Next you will change the
+java package name to use your project name and make sure everything still works.
+
+### Rename Java Package
+
+You should now be able to rename the Java package to match your project name.
+
+* Open the project in IntelliJ
+* Expand boot-server/src/main/java and you should see the "com.exochain.myproject" package.
+* Right click on the "com.exochain.myproject" package and choose Refactor-Rename.
+* Change "myproject" to whatever you named your project and accept
+
+This should change the package names in all imports.
+
+Finally, edit the boot-server/src/main/java/com/exochain/<myproject>/BootServer.java and
+change the following line to have your project instead of "myproject":
+
+    @ComponentScan(basePackages = {"com.exochain.myproject"})
+
+Re-run the sanity check steps from above to make sure your changes are correct and
+that the app still starts and responds to the web request.  Remember that the
+`java -jar boot-server/target/myproject-server-0.0.1-SNAPSHOT.jar` command will have
+to be modified to use your project name instead of
+`boot-server/target/myproject-server-0.0.1-SNAPSHOT.jar`
+
+### Fix the README
+
+Now edit this file to remove these template instructions and provide some basic
+information about your project.
+
+## Next Steps
+
+* The project has a very simple example web page and session bean set up just to
+test that the app responds and renders a freemarker template correctly.  You may
+not need these features so you can delete them.  They are simply there to verify
+the plumbing works and provide a basic example of a web app.
+* RootController is currently a web app for dynamic web pages, not a service
+controller.  You can change this to @RestController with other appropriate code
+edits to convert it, and move it to whatever package name you like.  It doesn't have
+to be under features/homepage.  That is just an example structure.
+* The project doesn't use individual .properties files.  The projects configuration
+settings should be in `boot-server/src/main/resources/application.yaml`.
+* The project already has a standalone maven module for generating technical documentation
+from AsciiDoc.  This is located in the `techdocs` module.  This module works just like
+the other ones in the main techdocs repo.  To create technical docs:
+** Edit asciidoc under `techdocs/src/docs/asciidoc/*`
+** Change to the `techdocs` directory
+** Run the `bin/gen-doc.sh` file to generate/update your docs to `<project-root>/docs/*`
+** Commit your changes both to the source asciidoc and also the newly generated docs
+under `<project-root>/docs/*` so that anyone checking out the projec can immediately
+view the updates docs without having to regenerate them locally (which would produce
+diffs due to time stamps in the docs)
+
+NOTE: The freemarker templates are under src/main/resources/templates/ directory.
+You don't need these if you are doing a service only and not a dynamic web page app.
+
+
+

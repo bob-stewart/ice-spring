@@ -1,0 +1,112 @@
+<included>
+    <appender name="JSON" class="ch.qos.logback.classic.AsyncAppender">
+        <queueSize>10000</queueSize>
+        <neverBlock>true</neverBlock>
+        <appender name="INT-JSON-FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <append>true</append>
+            <prudent>false</prudent>
+            <file>${LOG_FILE}.json.log</file>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <!-- Roll over hourly -->
+                <fileNamePattern>${LOG_FILE}.json.%d{yyyy-MM-dd_HH}.gz</fileNamePattern>
+                <!-- 240 (hours) maximum log history files -->
+                <maxHistory>240</maxHistory>
+                <totalSizeCap>500GB</totalSizeCap>
+            </rollingPolicy>
+
+            <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+                <providers>
+                    <timestamp/>
+                    <pattern>
+                        <pattern>
+                            {
+                            "host": "${HOSTNAME}",
+                            "pid": "${PID}"
+                            }
+                        </pattern>
+                    </pattern>
+                    <threadName>
+                        <fieldName>threadName</fieldName>
+                    </threadName>
+                    <logLevel>
+                        <fieldName>logLevel</fieldName>
+                    </logLevel>
+                    <loggerName>
+                        <fieldName>loggerName</fieldName>
+                    </loggerName>
+                    <mdc>
+                        <fieldName>mdc</fieldName>
+                    </mdc>
+                    <tags/>
+                    <logstashMarkers/>
+                    <arguments>
+                        <fieldName>evtArgs</fieldName>
+                    </arguments>
+                    <message/>
+                    <stackHash>
+                        <fieldName>stackHash</fieldName>
+                        <exclude>\$\$FastClassByCGLIB\$\$</exclude>
+                        <exclude>\$\$EnhancerBySpringCGLIB\$\$</exclude>
+                        <exclude>^sun\.reflect\..*\.invoke</exclude>
+                        <!-- JDK internals -->
+                        <exclude>^com\.sun\.</exclude>
+                        <exclude>^sun\.net\.</exclude>
+                        <!-- dynamic invocation -->
+                        <exclude>^net\.sf\.cglib\.proxy\.MethodProxy\.invoke</exclude>
+                        <exclude>^org\.springframework\.cglib\.</exclude>
+                        <exclude>^org\.springframework\.transaction\.</exclude>
+                        <exclude>^org\.springframework\.validation\.</exclude>
+                        <exclude>^org\.springframework\.app\.</exclude>
+                        <exclude>^org\.springframework\.aop\.</exclude>
+                        <exclude>^java\.lang\.reflect\.Method\.invoke</exclude>
+                        <!-- Spring plumbing -->
+                        <exclude>^org\.springframework\.ws\..*\.invoke</exclude>
+                        <exclude>^org\.springframework\.ws\.transport\.</exclude>
+                        <exclude>^org\.springframework\.ws\.soap\.saaj\.SaajSoapMessage\.</exclude>
+                        <exclude>^org\.springframework\.ws\.client\.core\.WebServiceTemplate\.</exclude>
+                        <exclude>^org\.springframework\.web\.filter\.</exclude>
+                        <!-- Tomcat internals -->
+                        <exclude>^org\.apache\.tomcat\.</exclude>
+                        <exclude>^org\.apache\.catalina\.</exclude>
+                        <exclude>^org\.apache\.coyote\.</exclude>
+                        <exclude>^java\.util\.concurrent\.ThreadPoolExecutor\.runWorker</exclude>
+                        <exclude>^java\.lang\.Thread\.run$</exclude>
+                    </stackHash>
+                    <stackTrace>
+                        <fieldName>stackTrace</fieldName>
+                        <throwableConverter class="net.logstash.logback.stacktrace.ShortenedThrowableConverter">
+                            <inlineHash>true</inlineHash>
+                            <!-- generated class names -->
+                            <exclude>\$\$FastClassByCGLIB\$\$</exclude>
+                            <exclude>\$\$EnhancerBySpringCGLIB\$\$</exclude>
+                            <exclude>^sun\.reflect\..*\.invoke</exclude>
+                            <!-- JDK internals -->
+                            <exclude>^com\.sun\.</exclude>
+                            <exclude>^sun\.net\.</exclude>
+                            <!-- dynamic invocation -->
+                            <exclude>^net\.sf\.cglib\.proxy\.MethodProxy\.invoke</exclude>
+                            <exclude>^org\.springframework\.cglib\.</exclude>
+                            <exclude>^org\.springframework\.transaction\.</exclude>
+                            <exclude>^org\.springframework\.validation\.</exclude>
+                            <exclude>^org\.springframework\.app\.</exclude>
+                            <exclude>^org\.springframework\.aop\.</exclude>
+                            <exclude>^java\.lang\.reflect\.Method\.invoke</exclude>
+                            <!-- Spring plumbing -->
+                            <exclude>^org\.springframework\.ws\..*\.invoke</exclude>
+                            <exclude>^org\.springframework\.ws\.transport\.</exclude>
+                            <exclude>^org\.springframework\.ws\.soap\.saaj\.SaajSoapMessage\.</exclude>
+                            <exclude>^org\.springframework\.ws\.client\.core\.WebServiceTemplate\.</exclude>
+                            <exclude>^org\.springframework\.web\.filter\.</exclude>
+                            <!-- Tomcat internals -->
+                            <exclude>^org\.apache\.tomcat\.</exclude>
+                            <exclude>^org\.apache\.catalina\.</exclude>
+                            <exclude>^org\.apache\.coyote\.</exclude>
+                            <exclude>^java\.util\.concurrent\.ThreadPoolExecutor\.runWorker</exclude>
+                            <exclude>^java\.lang\.Thread\.run$</exclude>
+                        </throwableConverter>
+                    </stackTrace>
+                </providers>
+            </encoder>
+        </appender>
+    </appender>
+</included>

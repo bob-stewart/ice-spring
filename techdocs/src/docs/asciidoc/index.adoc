@@ -1,0 +1,85 @@
+= Template Document Title
+Exochain Team <team@exochain.com>
+:revnumber: {project-version}
+:revdate: {build-date}
+ifndef::imagesdir[:imagesdir: images]
+
+Any other front matter here you wish.
+
+== Chapter 1
+
+This is an example document project set up with an automated build chain.
+
+This document toolchain uses Asciidoc as the markup language.  Github also supports
+this format in addition to regular markdown.
+
+.References for Asciidoc:
+* http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/[Syntax Quick Reference]
+* http://asciidoctor.org/docs/asciidoc-writers-guide/[Writer's Guide]
+* http://asciidoctor.org/docs/user-manual/[Full User Manual]
+* http://asciidoctor.org/docs/asciidoc-recommended-practices/[Recommended Practices]
+
+For the (debatable) sake of convenience, the tool chain has been set up using
+Java for easier cross-platform portability and automated building although there
+are other command line tools for every platform.  To use this approach you must
+have Java and Maven installed in your path so that the `java` command and the `mvn`
+command work from the command line.  You also need a bash shell, or you can read
+the simple contents of `bin/gen-docs.sh` and perform the steps manually.
+
+If you have the above requirements met, then all you need to do to generate the document
+is to change to the root of your document project directory and run the
+following command:
+
+    bin/gen-docs.sh
+
+
+== Chapter 2
+
+Some chapter content.
+
+Here is an image:
+
+image::exochain.png[]
+
+
+== Chapter 3
+
+Here is a diagram.  You can use https://plantuml.com diagrams in your
+docs.
+
+[plantuml,make-up-unique-name-across-diagrams]
+....
+start
+:Conception;
+:Socialization;
+repeat
+    :Feedback;
+    :Adjust based on feedback;
+
+repeat while (More feedback needed?)
+:Finalize;
+:Release;
+stop
+....
+
+
+== Chapter 4
+
+Here is a table.
+
+[cols="1,2,5", options="header"]
+|===
+|Item
+|Name
+|Description
+
+|1
+|FizzBuzz
+|A game that is popular for implementation tests
+
+|2
+|Antidisestablishmentarianism
+|Opposition to the disestablishment of an entity
+
+
+|===
