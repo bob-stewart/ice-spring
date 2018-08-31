@@ -1,4 +1,4 @@
-package com.exochain.myproject.features.homepage;
+package com.exochain.ice.features.homepage;
 
 import com.fasterxml.uuid.Generators;
 import com.fasterxml.uuid.impl.TimeBasedGenerator;
