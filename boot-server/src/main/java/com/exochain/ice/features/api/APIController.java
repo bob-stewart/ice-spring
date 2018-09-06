@@ -4,14 +4,8 @@ import com.fasterxml.uuid.Generators;
 import com.fasterxml.uuid.impl.TimeBasedGenerator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.time.Instant;
@@ -59,10 +53,9 @@ public class APIController {
         return test;
     }
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @RequestMapping(value = {"/", "/create"}, method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.CREATED)
     public String createCard(@RequestBody Card card) {
-        // System.out.println(woo);
-        // Card card = new Card(); // TODO: Recieve card as JSON
         return "{\"id\":" + db.addCard(card) + "}";
     }
 
