@@ -1,5 +1,5 @@
 
-package com.exochain.model;
+package com.exochain.ice.model;
 
 public class Contact {
     public String address;

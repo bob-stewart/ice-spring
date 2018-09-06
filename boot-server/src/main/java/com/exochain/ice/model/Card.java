@@ -1,10 +1,14 @@
-package com.exochain.model;
+package com.exochain.ice.model;
 
 import java.util.Map;
-import com.exochain.model.KeyData;
-import com.exochain.model.EncryptedString;
-// import com.exochain.model.AsymmetricEncryptedString;
-class AsymmetricEncryptedString {} // TODO
+import com.exochain.ice.model.KeyData;
+import com.exochain.ice.model.EncryptedString;
+// import com.exochain.ice.model.AsymmetricEncryptedString;
+class AsymmetricEncryptedString extends EncryptedString {
+    AsymmetricEncryptedString(String s) {
+        super(s);
+    }
+} // TODO
 
 public class Card {
     public Contact[] contacts;
