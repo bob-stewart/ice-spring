@@ -21,6 +21,9 @@ public class MockDB {
 				cards.put(id, card);
 				return id;
 		}
+		public void updateCard(String id, Card card) {
+				cards.put(id, card);
+		}
 
 }
 

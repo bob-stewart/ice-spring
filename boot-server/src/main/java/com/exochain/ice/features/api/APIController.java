@@ -59,6 +59,12 @@ public class APIController {
         return "{\"id\":" + db.addCard(card) + "}";
     }
 
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public String updateCard(@PathVariable String id, @RequestBody Card card) {
+        db.updateCard(id, card);
+        return "{\"success\": \"updated\"}";
+    }
+
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Card getCard(@PathVariable String id) {
         return db.getCard(id);
