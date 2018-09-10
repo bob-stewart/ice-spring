@@ -1,12 +1,16 @@
 package com.exochain.ice.model;
 
+import com.exochain.ice.ContactID;
+
 public class Contact {
-    public String address;
-    public String email;
-    public String name;
-    public String phone;
-    public String id;
-    public String contactType;
+    public String address = "";
+    public String email = "";
+    public String name = "";
+    public String phone = "";
+    public ContactID id;
+    // I initially thought to store contactType here, to make displaying the
+    // type easier for clients. But then I realized, that should lie in the
+    // client, and we don't want that redundant data serialized everwhere
     private boolean isEmpty() {
         return address.isEmpty() &&
                 email.isEmpty() &&
