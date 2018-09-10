@@ -17,5 +17,9 @@ public class Card {
     public EncryptedString secure;
     public Map<String, AsymmetricEncryptedString> escrow;
     public KeyData keyData;
+    // Initializes the card for the database. Mostly just delegates
+    public void initialize() {
+        contacts.initialize();
+    }
 }
 
