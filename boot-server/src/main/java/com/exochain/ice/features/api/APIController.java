@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpSession;
 import java.time.Instant;
@@ -14,8 +15,7 @@ import java.time.ZonedDateTime;
 import java.util.Locale;
 
 import com.exochain.ice.model.Card;
-// Mock. TODO: Use proper DI mocking / testing
-import com.exochain.ice.model.mock.MockDB;
+import com.exochain.ice.IDB;
 
 class TestObject {
     public String hello;

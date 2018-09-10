@@ -5,8 +5,9 @@ import java.util.HashMap;
 
 import com.exochain.ice.model.Card;
 import com.exochain.ice.ContactID;
+import com.exochain.ice.IDB;
 
-public class MockDB {
+public class MockDB implements IDB {
     
     private Map<String, Card> cards;
 

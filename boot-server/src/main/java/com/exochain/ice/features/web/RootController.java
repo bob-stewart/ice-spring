@@ -29,7 +29,7 @@ public class RootController {
     }
     @RequestMapping(value = "/", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.FOUND)
-    public String makeCardPost(@RequestBody Card card) {
+    public String makeCardPost(@RequestParam Card card) {
         String id = db.addCard(card).toString();
         return "/" + id + "/print";
     }
