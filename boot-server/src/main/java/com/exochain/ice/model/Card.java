@@ -1,6 +1,7 @@
 package com.exochain.ice.model;
 
 import java.util.Map;
+import com.exochain.ice.model.PublicContactList;
 import com.exochain.ice.model.KeyData;
 import com.exochain.ice.model.EncryptedString;
 // import com.exochain.ice.model.AsymmetricEncryptedString;
@@ -11,7 +12,7 @@ class AsymmetricEncryptedString extends EncryptedString {
 } // TODO
 
 public class Card {
-    public Contact[] contacts;
+    public PublicContactList contacts;
     public String notes;
     public EncryptedString secure;
     public Map<String, AsymmetricEncryptedString> escrow;
