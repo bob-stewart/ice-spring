@@ -1,5 +1,7 @@
 package com.exochain.ice.model;
 
+import java.util.HashMap;
+
 import com.exochain.ice.ContactID;
 
 public class Contact {
@@ -8,6 +10,19 @@ public class Contact {
     public String name = "";
     public String phone = "";
     public ContactID id;
+    public Contact() {
+        // All fields already initiliazed by inline defaults
+        id = null;
+    }
+    public Contact(String prefix, HashMap<String, String> formData) {
+        String p = prefix + ":";
+        address    = formData.get(p+"address");
+        email      = formData.get(p+"email");
+        name       = formData.get(p+"name");
+        phone      = formData.get(p+"phone");
+        String sid = formData.get(p+"id");
+        id = sid == null ? null : new ContactID(sid);
+    }
     // I initially thought to store contactType here, to make displaying the
     // type easier for clients. But then I realized, that should lie in the
     // client, and we don't want that redundant data serialized everwhere

@@ -5,6 +5,9 @@ import org.springframework.ui.Model;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.servlet.view.RedirectView;
+
+import java.util.HashMap;
 
 import javax.servlet.http.HttpSession;
 
@@ -29,9 +32,11 @@ public class RootController {
     }
     @RequestMapping(value = "/", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.FOUND)
-    public String makeCardPost(@RequestParam Card card) {
+    public RedirectView makeCardPost(@RequestParam HashMap<String, String> cardData) {
+        Card card = new Card(cardData);
         String id = db.addCard(card).toString();
-        return "/" + id + "/print";
+        return new RedirectView("/api/v0/" + id); // TODO: Create print page and redirect there
+        // return new RedirectView("/" + id + "/print"); // ie use this
     }
 
 }

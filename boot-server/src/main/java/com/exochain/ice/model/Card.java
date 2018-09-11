@@ -17,6 +17,10 @@ public class Card {
     public EncryptedString secure;
     public HashMap<String, AsymmetricEncryptedString> escrow;
     public KeyData keyData;
+    public Card(HashMap<String, String> formData) {
+        contacts = new PublicContactList(formData);
+        notes = formData.get("notes");
+    }
     // Initializes the card for the database. Mostly just delegates
     public void initialize() {
         contacts.initialize();

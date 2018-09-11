@@ -34,7 +34,7 @@ Renders:
         <#assign value = "">
       </#if>
       placeholder="${field?capitalize}"
-      name="${name}-${field}"
+      name="${name}:${field}"
       class="field ${name}" <#-- Used for clearGroup and more -->
       value="${value}"
     />
