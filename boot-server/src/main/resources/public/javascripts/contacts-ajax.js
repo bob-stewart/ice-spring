@@ -6,8 +6,7 @@ function fillGroup(group, data, keyOnly) {
     if (!keyOnly || field == 'key') {
       if (data && data[field]) {
 	all[i].value = data[field];
-      }
-      else {
+      } else {
 	all[i].value = '';
       }
     }
@@ -35,8 +34,7 @@ function check(group) {
 	fillGroup(group, '', true);
 	$('.search-result.' + group).remove();
 	return;
-      }
-      else {
+      } else {
 	throw new Error(entry.error);
 	return;
       }

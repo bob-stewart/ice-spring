@@ -13,8 +13,7 @@ public class ContactID {
     public ContactID(String id) {
         if (!id.isEmpty()) {
             this.id = id;
-        }
-        else {
+        } else {
             throw new IllegalArgumentException("ContactID cannot be empty");
         }
     }
