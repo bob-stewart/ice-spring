@@ -1,7 +1,3 @@
-HERES THE CARD: ${card}$
-HERES THE DIRECT: ${notesDirect}$
-HERES THE NOTES: ${card.notes}$
-HERES THE CONTACTS: ${card.contacts}$
 <#assign contacts = card.contacts>
 <#assign you = contacts.you>
 <!DOCTYPE html>
@@ -31,11 +27,11 @@ HERES THE CONTACTS: ${card.contacts}$
         <h2>${you.name}'s emergency info</h2>
         <div class="col-left">
           <p>Scan the QR code or enter the URL:</p>
-          <p>${url}</p>
+          <p>${baseURL}/${you.id}</p>
           <p><b>Some</b> info printed on back of card.</p>
         </div>
         <div class="col-right">
-          <img src="${cardUrl}/qr.svg" alt="qr-code" />
+          <img src="${baseURL}/${you.id}/qr.gif" alt="qr-code" />
         </div>
         <div class="clear"></div>
       </div>
