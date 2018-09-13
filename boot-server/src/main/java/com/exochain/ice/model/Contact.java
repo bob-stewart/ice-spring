@@ -1,15 +1,19 @@
 package com.exochain.ice.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.HashMap;
 
 import com.exochain.ice.ContactID;
 
+@Getter @Setter
 public class Contact {
-    public String address = "";
-    public String email = "";
-    public String name = "";
-    public String phone = "";
-    public ContactID id;
+    private String address = "";
+    private String email = "";
+    private String name = "";
+    private String phone = "";
+    private ContactID id;
     public Contact() {
         // All fields already initiliazed by inline defaults
         id = null;
@@ -21,7 +25,7 @@ public class Contact {
         name       = formData.get(p+"name");
         phone      = formData.get(p+"phone");
         String sid = formData.get(p+"id");
-        id = sid == null ? null : new ContactID(sid);
+        id = sid.isEmpty() ? null : new ContactID(sid);
     }
     // I initially thought to store contactType here, to make displaying the
     // type easier for clients. But then I realized, that should lie in the

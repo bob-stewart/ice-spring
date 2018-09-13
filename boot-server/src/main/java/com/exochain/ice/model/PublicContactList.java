@@ -5,6 +5,10 @@ import java.util.HashMap;
 import com.exochain.ice.model.IContactList;
 import com.exochain.ice.model.Contact;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter @Setter
 public class PublicContactList extends IContactList {
     public Contact you = new Contact();
     public Contact primary = new Contact();

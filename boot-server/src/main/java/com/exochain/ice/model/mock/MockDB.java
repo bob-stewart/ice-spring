@@ -22,7 +22,7 @@ public class MockDB implements IDB {
         card.initialize();
         // For now, in keeping with ice-node's convention, we use our ContactID
         // as the Card ID
-        String id = card.contacts.you.id.toString();
+        String id = card.getContacts().getYou().getId().toString();
         cards.put(id, card);
         return id;
     }

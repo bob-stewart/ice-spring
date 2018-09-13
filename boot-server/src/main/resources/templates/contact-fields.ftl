@@ -15,11 +15,11 @@ Renders:
       "email",
       "phone",
       "address",
-      "key"
+      "id"
     ]>
   <#list fields as field>
     <input
-      <#if field == "key">
+      <#if field == "id">
         type="hidden"
       <#else>
         type="text"
@@ -42,6 +42,7 @@ Renders:
   <a
     href="javascript:void(0);"
     onclick="fillGroup('${name}');"
+    tabindex="-1"
     class="clear-group ${name}">
     Clear
   </a>

@@ -1,5 +1,8 @@
 package com.exochain.ice.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.HashMap;
 import com.exochain.ice.model.PublicContactList;
 import com.exochain.ice.model.KeyData;
@@ -11,12 +14,13 @@ class AsymmetricEncryptedString extends EncryptedString {
     }
 } // TODO
 
+@Getter @Setter
 public class Card {
-    public PublicContactList contacts;
-    public String notes;
-    public EncryptedString secure;
-    public HashMap<String, AsymmetricEncryptedString> escrow;
-    public KeyData keyData;
+    private PublicContactList contacts;
+    private String notes;
+    private EncryptedString secure;
+    private HashMap<String, AsymmetricEncryptedString> escrow;
+    private KeyData keyData;
     public Card(HashMap<String, String> formData) {
         contacts = new PublicContactList(formData);
         notes = formData.get("notes");
