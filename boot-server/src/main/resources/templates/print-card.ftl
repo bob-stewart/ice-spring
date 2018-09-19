@@ -31,7 +31,7 @@
           <p><b>Some</b> info printed on back of card.</p>
         </div>
         <div class="col-right">
-          <img src="${baseURL}/${you.id}/qr.gif" alt="qr-code" />
+          <img src="/${you.id}/qr.gif" alt="qr-code" />
         </div>
         <div class="clear"></div>
       </div>
