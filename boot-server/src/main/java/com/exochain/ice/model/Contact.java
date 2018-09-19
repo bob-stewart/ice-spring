@@ -1,4 +1,4 @@
-package com.exochain.ice.model;
+package com.exochain.ice;
 
 import lombok.Getter;
 import lombok.Setter;

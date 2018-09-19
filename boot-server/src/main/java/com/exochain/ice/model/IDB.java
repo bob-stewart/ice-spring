@@ -1,6 +1,6 @@
 package com.exochain.ice;
 
-import com.exochain.ice.model.Card;
+import com.exochain.ice.Card;
 
 public interface IDB {
     public Card getCard(String id);

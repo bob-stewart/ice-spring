@@ -1,13 +1,13 @@
-package com.exochain.ice.model;
+package com.exochain.ice;
 
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.HashMap;
-import com.exochain.ice.model.PublicContactList;
-import com.exochain.ice.model.KeyData;
-import com.exochain.ice.model.EncryptedString;
-// import com.exochain.ice.model.AsymmetricEncryptedString;
+import com.exochain.ice.PublicContactList;
+import com.exochain.ice.KeyData;
+import com.exochain.ice.EncryptedString;
+// import com.exochain.ice.AsymmetricEncryptedString;
 class AsymmetricEncryptedString extends EncryptedString {
     AsymmetricEncryptedString(String s) {
         super(s);

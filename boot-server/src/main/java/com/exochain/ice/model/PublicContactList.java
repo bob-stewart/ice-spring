@@ -1,9 +1,9 @@
-package com.exochain.ice.model;
+package com.exochain.ice;
 
 import java.util.HashMap;
 
-import com.exochain.ice.model.IContactList;
-import com.exochain.ice.model.Contact;
+import com.exochain.ice.IContactList;
+import com.exochain.ice.Contact;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,6 +1,6 @@
-package com.exochain.ice.model;
+package com.exochain.ice;
 
-import com.exochain.ice.model.EncryptedString;
+import com.exochain.ice.EncryptedString;
 
 public class KeyData {
     public String publicKey;

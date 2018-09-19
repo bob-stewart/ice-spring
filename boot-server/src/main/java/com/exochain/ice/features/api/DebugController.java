@@ -11,7 +11,7 @@ import org.springframework.util.LinkedMultiValueMap;
 import javax.servlet.http.HttpSession;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import com.exochain.ice.model.Card;
+import com.exochain.ice.Card;
 import com.exochain.ice.IDB;
 
 @RestController

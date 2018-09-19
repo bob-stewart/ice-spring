@@ -1,9 +1,9 @@
-package com.exochain.ice.model.mock;
+package com.exochain.ice.mock;
 
 import java.util.Map;
 import java.util.HashMap;
 
-import com.exochain.ice.model.Card;
+import com.exochain.ice.Card;
 import com.exochain.ice.ContactID;
 import com.exochain.ice.IDB;
 

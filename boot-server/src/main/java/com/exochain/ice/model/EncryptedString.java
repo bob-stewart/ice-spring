@@ -1,5 +1,5 @@
 
-package com.exochain.ice.model;
+package com.exochain.ice;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 

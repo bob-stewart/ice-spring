@@ -23,7 +23,7 @@ import java.io.IOException;
 
 import javax.servlet.http.HttpSession;
 
-import com.exochain.ice.model.Card;
+import com.exochain.ice.Card;
 import com.exochain.ice.IDB;
 
 @Controller

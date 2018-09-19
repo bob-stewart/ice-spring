@@ -1,8 +1,8 @@
-package com.exochain.ice.model;
+package com.exochain.ice;
 
-import com.exochain.ice.model.Contact;
-import com.exochain.ice.model.IContactList;
-import com.exochain.ice.model.PublicContactList;
+import com.exochain.ice.Contact;
+import com.exochain.ice.IContactList;
+import com.exochain.ice.PublicContactList;
 
 public class PrivateContactList extends IContactList {
     public Contact physician = new Contact();
