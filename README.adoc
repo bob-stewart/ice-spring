@@ -13,27 +13,17 @@ Serves at port 8080
 
 ## Design
 
-Architecture design for this project can be found at techdocs/ice-card
+Architecture design for this project can be found at
+https://github.com/exochaindev/techdocs/blob/master/ice-card/src/docs/asciidoc/index.adoc[techdocs]
 
 ## Project Features
 
-* Stub spring boot http app with maven module structure
-* Logging config etc. already configured
-* Example freemarker template and http controller
+* Web pages for make card, print card
+* API for plaintext card operations
 * A template for techdocs AsciiDoc for this project
 
-## Next Steps
+## Docs (none currently)
 
-* The project has a very simple example web page and session bean set up just to
-test that the app responds and renders a freemarker template correctly.  You may
-not need these features so you can delete them.  They are simply there to verify
-the plumbing works and provide a basic example of a web app.
-* RootController is currently a web app for dynamic web pages, not a service
-controller.  You can change this to @RestController with other appropriate code
-edits to convert it, and move it to whatever package name you like.  It doesn't have
-to be under features/homepage.  That is just an example structure.
-* The project doesn't use individual .properties files.  The projects configuration
-settings should be in `boot-server/src/main/resources/application.yaml`.
 * The project already has a standalone maven module for generating technical documentation
 from AsciiDoc.  This is located in the `techdocs` module.  This module works just like
 the other ones in the main techdocs repo.  To create technical docs:
